@@ -2,7 +2,7 @@ class Url < ApplicationRecord
 
   UNIQUE_ID = 5
   validates :long_url, presence: true, on: :create
-  before_create :generate_short_url, :sanitize, :set_expiration
+  before_create :generate_short_url, :sanitize, :set_expiration, :set_clicks_count
 
   def generate_short_url
     url = ([*('a'..'z'),*('0'..'9')]).sample(UNIQUE_ID).join
@@ -30,5 +30,9 @@ class Url < ApplicationRecord
 
   def set_expiration
     self.expires_at = 1.month.from_now
+  end
+
+  def set_clicks_count
+    self.clicks = 0
   end
 end

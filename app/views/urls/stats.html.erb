@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Analytics</h2>
+  <% host = request.host_with_port %>
+  <% Url.all.each do |short|%>
+    <hr>
+    <h4>Long URL: <%= short.long_url %></h4>
+    <h4>Shortened URL: <%= host + '/' + short.short_url %></h4>
+    <h4>IP: <%= @ip_add%></h4>
+    <h4>Location: <%= @location%></h4>
+  <% end %>
+</body>
+</html>

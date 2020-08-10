@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <p style="background-color: green;"><%= notice %></p>
+
+  <h1>Welcome to URL Shortening Service</h1>
+  <p class="links"><%= link_to 'Create New', :controller => "urls", :action => "new" %></p>
+  <p class="links"><%= link_to 'Get analysis', urls_stats_path %></p>
+
+  <h2>List Of URLs: </h2>
+  <% host = request.host_with_port %>
+  <% @urls.all.each do |short|%>
+    <hr>
+    <h4>Long URL: <%= short.long_url %></h4>
+    <h4>Shortened URL: <%= host + '/' + short.short_url %></h4>
+  <% end %>
+</body>
+</html>

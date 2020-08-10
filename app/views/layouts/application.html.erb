@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ShortenUrlService</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>ShortenUrlService</title>
+  <%= csrf_meta_tags %>
 
-    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag    'application' %>
+  <%= javascript_include_tag 'application' %>
+  <style type="text/css">
+    .links{
+      border-style: solid;
+      /*background-color: green;*/
+      width: 100px;
+      padding: 10px;
+      display: inline-block;
+    }
+    </style>
   </head>
 
   <body>

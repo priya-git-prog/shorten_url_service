@@ -28,7 +28,11 @@ class UrlsController < ApplicationController
   end
 
   def show
-    redirect_to @url.sanitize_url
+    if @url.expires_at >= Date.today
+      redirect_to @url.sanitize_url
+    else
+      render :file => "#{Rails.root}/public/404.html",  :status => 404
+    end
   end
 
   def stats

@@ -2,7 +2,7 @@ class Url < ApplicationRecord
 
   UNIQUE_ID = 5
   validates :long_url, presence: true, on: :create
-  before_create :generate_short_url, :sanitize
+  before_create :generate_short_url, :sanitize, :set_expiration
 
   def generate_short_url
     url = ([*('a'..'z'),*('0'..'9')]).sample(UNIQUE_ID).join
@@ -26,5 +26,9 @@ class Url < ApplicationRecord
     self.long_url.strip!
     self.sanitize_url = self.long_url.downcase.gsub(/(https?:\/\/)|(www\.)/,"")
     self.sanitize_url = "http://#{self.sanitize_url}"
+  end
+
+  def set_expiration
+    self.expires_at = 1.month.from_now
   end
 end

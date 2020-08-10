@@ -29,6 +29,7 @@ class UrlsController < ApplicationController
 
   def show
     if @url.expires_at >= Date.today
+      @url.update_attribute(:clicks, @url.clicks + 1)
       redirect_to @url.sanitize_url
     else
       render :file => "#{Rails.root}/public/404.html",  :status => 404
@@ -37,7 +38,8 @@ class UrlsController < ApplicationController
 
   def stats
     @ip_add = request.ip
-    @location = request.location.country
+    #doesn't works on local envt.
+    @location = request.location.country #or  Geocoder.search(request.ip)[0].data["country"]
   end
 
   private

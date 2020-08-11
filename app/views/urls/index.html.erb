@@ -4,8 +4,8 @@
   <p style="background-color: green;"><%= notice %></p>
 
   <h1>Welcome to URL Shortening Service</h1>
-  <p class="links"><%= link_to 'Create New', :controller => "urls", :action => "new" %></p>
-  <p class="links"><%= link_to 'Get analysis', urls_stats_path %></p>
+  <p class="links"><%= link_to 'Create New', new_path %></p>
+  <p class="links"><%= link_to 'Get analysis', stats_path %></p>
 
   <h2>List Of URLs: </h2>
   <% host = request.host_with_port %>

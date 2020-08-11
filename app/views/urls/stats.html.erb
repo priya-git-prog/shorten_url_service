@@ -2,6 +2,8 @@
 <html>
 <body>
   <h2>Analytics</h2>
+  <p class="links"><%= link_to "All URLs", "/" %></p>
+  <p class="links"><%= link_to 'Create New', new_path %></p>
   <% host = request.host_with_port %>
   <% Url.all.each do |url|%>
     <hr>

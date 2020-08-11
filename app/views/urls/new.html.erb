@@ -3,17 +3,17 @@
   <body>
     <h1>Welcome to URL Shortening Service</h1>
     <h3>Enter Long URL</h3>
-    <form action="/urls/create", method="post">
+    <form action="/create", method="post">
       <input type="text" style="width: 40%" value="" name="long_url">
       <input type="submit" value="SHORTEN" >
     </form><br>
 
     <div>
       <h4>Long URL: <%= @long_url%></h4>
-      <h4>Shortened URL: </h4><%= link_to @short_url, "#{url_with_protocol(@short_url)}", target: "new" %>
+      <h4>Shortened URL: <%= link_to @short_url, "#{url_with_protocol(@short_url)}", target: "new" %></h4>
     </div><br>
 
-    <p class="links"><%= link_to "All URLs", controller: "urls", action: "index" %></p>
-    <p class="links"><%= link_to "Get analysis", urls_stats_path %></p>
+    <p class="links"><%= link_to "All URLs", "/" %></p>
+    <p class="links"><%= link_to "Get analysis", stats_path %></p>
   </body>
 </html>
